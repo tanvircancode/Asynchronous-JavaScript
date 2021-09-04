@@ -31,17 +31,20 @@ const addToCalender2 = (meetingDetails) => {
         return Promise.resolve(calender2);
 };
 
-async function myMeeting(){
-    const meetingDetails = await meeting;
-    const calender = await addToCalender(meetingDetails);
-    const calender2 = await addToCalender2(calender);
-    console.log(calender2);
+async function myMeeting() {
+    try {
+      const meetingDetails = await meeting;
+      const calender = await addToCalender(meetingDetails);
+      const calender2 = await addToCalender2(calender);
+      console.log(calender2);
+    }
+    catch {
+        console.log(`Something wrong happened`);
+    }
 }
-// myMeeting();
-meeting
-    .then((addToCalender2) => {
-        console.log(JSON.stringify(addToCalender2)+ 'saaaaa') ;
-    })
-    .catch((err) => console.log(err.message));
+myMeeting();
+// meeting
+//     .then(myMeeting)
+//     .catch((err) => console.log(err.message));
 
 console.log(`Hello World`);
